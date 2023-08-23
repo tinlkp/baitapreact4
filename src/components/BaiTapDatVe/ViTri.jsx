@@ -1,15 +1,25 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 
-export default class ViTri extends Component {
+class ViTri extends Component {
     render() {
         // console.log(this.props.element);
-        const { soGhe } = this.props.element;
+        const { soGhe, dangChon, daDat } = this.props.element;
         return (
-            
+
             <td>
-                <button className="chair">{soGhe}</button>
+                <button onClick={() => this.props.dispatch({
+                    type: "CHON_GHE",
+                    payload: this.props.element,
+                })
+                }
+                    className={`chair ${dangChon && "gheDangChon"} ${daDat && "gheDuocChon"}`} disabled={daDat}>{soGhe}</button>
             </td>
 
         )
     }
 }
+
+
+
+export default connect()(ViTri)

@@ -41,8 +41,8 @@
  }
 
  .chair {
-     width: 30px;
-     height: 30px;
+    width: 45px;
+    height: 35px;
      border-radius: 5px;
      border: 1px solid orange;
      text-align: center;
@@ -111,8 +111,8 @@
 
      cursor: no-drop !important;
      border-radius: 5px;
-     width: 30px;
-     height: 30px;
+     width: 45px;
+     height: 35px;
  }
 
  .gheDangChon {
@@ -122,8 +122,8 @@
 
      cursor: pointer;
      border-radius: 5px;
-     width: 30px;
-     height: 30px;
+     width: 45px;
+     height: 35px;
 
  }
  .colorRed{

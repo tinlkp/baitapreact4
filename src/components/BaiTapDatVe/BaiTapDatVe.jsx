@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import "./testcss.css"
 import DanhSachVe from './DanhSachVe'
+import BangTinh from './BangTinh'
+
 
 
 export default class BaiTapDatVe extends Component {
@@ -28,38 +30,7 @@ export default class BaiTapDatVe extends Component {
                                 <button className="chair"></button><span className='textBtn'>Ghế chưa đặt</span>
                             </div>
                         </div>
-                        <table className="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th className='clw'>Số Ghế</th>
-                                    <th className='clw'>Giá</th>
-                                    <th className='clw'>Hủy</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr className='color'>
-                                    <td>A1</td>
-                                    <td>150.000</td>
-                                    <td>
-                                        <span className='colorRed'>X</span>
-                                    </td>
-                                </tr>
-                                <tr className='color'>
-                                    <td>A2</td>
-                                    <td>150.000</td>
-                                    <td>
-                                        <span className='colorRed'>X</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td className='clw'>Tổng tiền</td>
-                                    <td className='color'>450.000</td>
-                                    <td></td>
-                                </tr>
-                            </tfoot>
-                        </table>
+                        <BangTinh />
 
 
 
