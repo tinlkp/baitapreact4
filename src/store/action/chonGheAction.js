@@ -14,3 +14,9 @@ export const xoaGheAction = (data) => {
         payload: data,
     };
 };
+export const thanhToanAction = (data) => {
+    return {
+        type: "THANH_TOAN",
+        payload: data,
+    };
+};

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 
 import "./testcss.css"
 import { connect } from 'react-redux'
-import { xoaGheAction } from '../../store/action/chonGheAction'
+import { thanhToanAction, xoaGheAction } from '../../store/action/chonGheAction'
 
 
 class BangTinh extends Component {
@@ -34,7 +34,7 @@ class BangTinh extends Component {
         return <tr>
             <td className="clw">Tổng tiền</td>
             <td className="color">{this.tinhTongTien()} </td>
-            <td>
+            <td><button onClick={()=>this.props.dispatch(thanhToanAction(this.props.danhSach))}>Thanh toán </button>
             </td>
         </tr>
     }

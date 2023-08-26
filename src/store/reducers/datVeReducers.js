@@ -49,7 +49,23 @@ export const datVeReducers = (state = DEFAULT_STATE, action) => {
 
             break;
         }
-       
+        case "THANH_TOAN": {
+            const data = JSON.parse(JSON.stringify(state.danhSachVe));
+
+            for (const hang of data) {
+                for (const ghe of hang.danhSachGhe) {
+                    if (ghe.dangChon) {
+                        ghe.daDat = !ghe.daDat;
+                        ghe.dangChon = !ghe.dangChon;
+                    }
+                }
+
+            }
+
+            state.danhSach = [];
+            state.danhSachVe = data;
+        }
+
 
     }
 

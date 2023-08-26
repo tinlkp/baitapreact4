@@ -9,9 +9,9 @@ class Ve extends Component {
             // console.log(element)
             if (this.props.element.hang === "") {
 
-                return <HeaderHang key={element.soGhe} element={element} />
+                return <HeaderHang key={element.soGhe}  element={element} />
             } else {
-                return <ViTri key={element.soGhe} element={element} />
+                return <ViTri key={element.soGhe} row={this.props.element.hang} element={element} />
 
             }
 
@@ -19,7 +19,6 @@ class Ve extends Component {
     }
 
     render() {
-
 
         return (
             <tr>
