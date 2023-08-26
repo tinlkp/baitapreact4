@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { chonGheAction } from '../../store/action/chonGheAction';
 
 class ViTri extends Component {
     render() {
@@ -8,10 +9,7 @@ class ViTri extends Component {
         return (
 
             <td>
-                <button onClick={() => this.props.dispatch({
-                    type: "CHON_GHE",
-                    payload: this.props.element,
-                })
+                <button onClick={() => this.props.dispatch(chonGheAction(this.props.element))
                 }
                     className={`chair ${dangChon && "gheDangChon"} ${daDat && "gheDuocChon"}`} disabled={daDat}>{soGhe}</button>
             </td>

@@ -3,41 +3,47 @@ import React, { Component } from 'react'
 
 import "./testcss.css"
 import { connect } from 'react-redux'
+import { xoaGheAction } from '../../store/action/chonGheAction'
+
 
 class BangTinh extends Component {
-    filterContent = () => {
-        return this.props.danhSachVe.filter((element) => element.dangChon === true)
-    }
 
+    
     renderContent = () => {
-        return this.filterContent().map((element) => {
-            return <tr key={element.soGhe} className="color">
+        return this.props.danhSach.map((element) => {
+            return <tr key={element.soGhe} className="color" >
                 <td>{element.soGhe}</td>
                 <td>{element.gia}</td>
                 <td>
-                    <span onClick={() => this.props.dispatch({
-                        type: "CHON_GHE",
-                        payload: element,
-                    })
-                    }
+                    <span onClick={() => this.props.dispatch(xoaGheAction(element))}
                         className="colorRed">X</span>
                 </td>
-            </tr>
+            </tr >
         })
 
     }
     tinhTongTien = () => {
-        return this.filterContent().forEach((element) => {
-            return element
-        })
-
+        let total = 0;
+        for (let i = 0; i < this.props.danhSach.length; i++) {
+            let giaTien = this.props.danhSach[i];
+            total += giaTien.gia;
+        }
+        return total;
+    }
+    renderTongTien = () => {
+        return <tr>
+            <td className="clw">Tổng tiền</td>
+            <td className="color">{this.tinhTongTien()} </td>
+            <td>
+            </td>
+        </tr>
     }
 
     render() {
-
+        
         return (
 
-            <table className="table table-bordered">
+            < table className="table table-bordered" >
                 <thead>
                     <tr>
                         <th className="clw">Số Ghế</th>
@@ -46,30 +52,14 @@ class BangTinh extends Component {
                     </tr>
                 </thead>
                 <tbody>
+
                     {this.renderContent()}
-                    {/* <tr className="color">
-                        <td>A1</td>
-                        <td>150.000</td>
-                        <td>
-                            <span className="colorRed">X</span>
-                        </td>
-                    </tr>
-                    <tr className="color">
-                        <td>A2</td>
-                        <td>150.000</td>
-                        <td>
-                            <span className="colorRed">X</span>
-                        </td>
-                    </tr> */}
+
                 </tbody>
                 <tfoot>
-                    <tr>
-                        <td className="clw">Tổng tiền</td>
-                        <td className="color">{this.tinhTongTien()} </td>;
-                        <td></td>
-                    </tr>
+                    {this.renderTongTien()}
                 </tfoot>
-            </table>
+            </ table>
 
 
         )
@@ -77,9 +67,8 @@ class BangTinh extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        danhSachVe: state.datVeReducers.danhSachVe.flatMap((element) => {
-            return element.danhSachGhe
-        }),
+        danhSachVe: state.datVeReducers.danhSachVe,
+        danhSach: state.datVeReducers.danhSach,
 
     }
 }
