@@ -57,12 +57,11 @@ export const datVeReducers = (state = DEFAULT_STATE, action) => {
                     if (ghe.dangChon) {
                         ghe.daDat = !ghe.daDat;
                         ghe.dangChon = !ghe.dangChon;
-                        alert(`Thanh toán ghế ${ghe.soGhe} thành công !!!`);
+
                     }
                 }
-
             }
-
+           
             state.danhSach = [];
             state.danhSachVe = data;
 
