@@ -11,7 +11,7 @@ class Ve extends Component {
 
                 return <HeaderHang key={element.soGhe}  element={element} />
             } else {
-                return <ViTri key={element.soGhe} row={this.props.element.hang} element={element} />
+                return <ViTri key={element.soGhe}  element={element} row={this.props.element.hang} />
 
             }
 
@@ -19,7 +19,7 @@ class Ve extends Component {
     }
 
     render() {
-
+       
         return (
             <tr>
                 <td className='color' >{this.props.element.hang}</td>

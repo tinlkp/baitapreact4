@@ -11,18 +11,21 @@ export const datVeReducers = (state = DEFAULT_STATE, action) => {
     switch (action.type) {
         case "CHON_GHE": {
             const data = JSON.parse(JSON.stringify(state.danhSachVe));
-            const index = data[action.payload.soHang].danhSachGhe.findIndex(
+            const indexRow = data.findIndex(
+                (element) => element.hang === action.payload.row);
+
+            const index = data[indexRow].danhSachGhe.findIndex(
                 (element) => element.soGhe === action.payload.soGhe
             );
 
-            data[action.payload.soHang].danhSachGhe[index].dangChon = !data[action.payload.soHang].danhSachGhe[index].dangChon;
+            data[indexRow].danhSachGhe[index].dangChon = !data[indexRow].danhSachGhe[index].dangChon;
             const index1 = state.danhSach.findIndex(
                 (element) => element.soGhe === action.payload.soGhe
             )
             if (index1 !== -1) {
 
             } else {
-                state.danhSach.push(data[action.payload.soHang].danhSachGhe[index]);
+                state.danhSach.push(data[indexRow].danhSachGhe[index]);
             }
 
             state.danhSachVe = data;
@@ -31,17 +34,21 @@ export const datVeReducers = (state = DEFAULT_STATE, action) => {
         }
         case "XOA_GHE": {
             const data1 = JSON.parse(JSON.stringify(state.danhSach));
+          
             const index1 = data1.findIndex((element) => {
                 return element.soGhe === action.payload.soGhe;
             })
             data1.splice(index1, 1);
 
             const data = JSON.parse(JSON.stringify(state.danhSachVe));
-            const index = data[action.payload.soHang].danhSachGhe.findIndex(
+            const indexRow = data.findIndex(
+                (element) => element.hang === action.payload.row);
+
+            const index = data[indexRow].danhSachGhe.findIndex(
                 (element) => element.soGhe === action.payload.soGhe
             );
 
-            data[action.payload.soHang].danhSachGhe[index].dangChon = !data[action.payload.soHang].danhSachGhe[index].dangChon;
+            data[indexRow].danhSachGhe[index].dangChon = !data[indexRow].danhSachGhe[index].dangChon;
 
 
             state.danhSach = data1;
@@ -61,7 +68,7 @@ export const datVeReducers = (state = DEFAULT_STATE, action) => {
                     }
                 }
             }
-           
+
             state.danhSach = [];
             state.danhSachVe = data;
 

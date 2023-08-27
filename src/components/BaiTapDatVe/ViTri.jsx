@@ -4,11 +4,11 @@ import { chonGheAction } from '../../store/action/chonGheAction';
 
 class ViTri extends Component {
     render() {
-      
-        // console.log(this.props.element);
-        const { soGhe, dangChon, daDat } = this.props.element;
+        const  row  = this.props.row;
+        const { soGhe, dangChon, daDat, } = this.props.element;
+       this.props.element.row=row;
         return (
-            
+
             <td>
                 <button onClick={() => this.props.dispatch(chonGheAction(this.props.element))
                 }
